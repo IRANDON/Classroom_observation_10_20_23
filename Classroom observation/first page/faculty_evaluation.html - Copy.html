@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Evaluation</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+    
+
+    </style>
+</head>
+<body>
+    <div class="form-container">
+	 <form method="post" action="process_form.php">
+	 
+		<div class="time-container">
+			<label for="time" class="right-label">Time:</label>&nbsp;&nbsp;
+			<span id="timePlaceholder" class="right-label"></span>
+		</div>
+		
+        <h1>FACULTY EVALUATION ON CLASSROOM INSTRUCTION (FECI FORM) CLASSROOM OBSERVATION FORM</h1>
+       
+            <p>
+                <label for="name" class="left-label">Name: or ID number:</label>
+                <input type="text" id="name" name="name" class="semi-small-input">
+               
+            </p>
+            <p>
+                <label for="subject" class="left-label">Subject of Instruction:</label>
+                <input type="text" id="subject" name "subject" class="semi-small-input">
+            </p>
+            <p>
+                <label for="grade" class="left-label">Grade level/Section:</label>
+                <input type="text" id="grade" name="grade" class="semi-small-input">
+            </p>
+            <p>
+                <label for="date">Date of Observation:</label>
+               <input type="date" id="date" name="date" class="semi-small-input">
+            </p>
+            <p>
+                <label for="observer" class="left-label">Name of Observer:</label>
+                <input type="text" id="observer" name="observer" class="semi-small-input">
+            </p>
+            <br>
+            <br>
+            <p>Rating Scale:</p>
+            <p>4 - Performance of this item is innovatively done</p>
+            <p>3 - Performance of this item is satisfactorily done</p>
+            <p>2 - Performance of this item is partially done due to some omissions</p>
+            <p>1 - Performance of this item is partially done due to serious errors and misconceptions</p>
+            <p>0 - Performance of this item is not observed at all</p>
+            <br>
+            <br>
+            <table>
+                <tr>
+                    <th><strong>TEACHER ACTION</strong></th>
+                    <th>5</th>
+                    <th>4</th>
+                    <th>3</th>
+                    <th>2</th>
+                    <th>1</th>
+                </tr>
+                <tr>
+                    <td>The teacher communicates clear expectations of student performance in line with the unit standards and competencies.</td>
+                    <td><input type="checkbox" name="rating1" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating1" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating1" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating1" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating1" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                </tr>
+            <tr>
+                <td>The teacher utilizes various learning materials and resources to enable all students to learn and achieve the unit standards and competencies and learning goals.</td>
+                <td><input type="checkbox" name="rating2" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating2" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating2" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating2" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating2" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+            </tr>
+            <tr>
+                <td>The teacher monitors and checks on students' learning and attainment of the unit standards and competencies by conducting varied forms of assessments during class discussion.</td>
+                <td><input type="checkbox" name="rating3" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating3" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating3" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating3" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating3" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+            </tr>
+            <tr>
+                <td>The teacher provides appropriate feedback or interventions.</td>
+                <td><input type="checkbox" name="rating4" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating4" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating4" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating4" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating4" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+            </tr>
+            <tr>
+                <td>Additional Teacher Action</td>
+                <td><input type="checkbox" name="rating5" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating5" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating5" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating5" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                <td><input type="checkbox" name="rating5" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+            </tr>
+        </table>
+
+        <div class="form-button"><br>
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function uncheckOther(checkbox) {
+            if (checkbox.checked) {
+                const checkboxes = document.querySelectorAll('input[name="' + checkbox.name + '"]');
+                checkboxes.forEach((otherCheckbox) => {
+                    if (otherCheckbox !== checkbox) {
+                        otherCheckbox.checked = false;
+                    }
+                });
+            }
+        }
+		    // JavaScript for automatic time
+        const timePlaceholder = document.getElementById("timePlaceholder");
+
+        function updateTime() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('en-US');
+            timePlaceholder.textContent = time;
+        }
+
+        updateTime(); // Call the function once to set the initial time
+        setInterval(updateTime, 1000); // Update the time every second
+    </script>
+</body>
+</html>
