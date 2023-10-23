@@ -99,11 +99,11 @@
             <br>
             <br>
             <p>Rating Scale:</p>
-            <p>4 - Performance of this item is innovatively done</p>
-            <p>3 - Performance of this item is satisfactorily done</p>
-            <p>2 - Performance of this item is partially done due to some omissions</p>
-            <p>1 - Performance of this item is partially done due to serious errors and misconceptions</p>
-            <p>0 - Performance of this item is not observed at all</p>
+            <p>5 - Performance of this item is innovatively done</p>
+            <p>4 - Performance of this item is satisfactorily done</p>
+            <p>3 - Performance of this item is partially done due to some omissions</p>
+            <p>2 - Performance of this item is partially done due to serious errors and misconceptions</p>
+            <p>1 - Performance of this item is not observed at all</p>
             <br>
             <br>
             <table>
