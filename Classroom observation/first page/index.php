@@ -13,19 +13,34 @@
             <span id="timePlaceholder" class="right-label"></span>
 
         </div>
+        <br/>
         <script>
-              function uncheckOther(checkbox) {
-            if (checkbox.checked) {
-                const checkboxes = document.querySelectorAll('input[name="' + checkbox.name + '"]');
-                checkboxes.forEach((otherCheckbox) => {
-                    if (otherCheckbox !== checkbox) {
-                        otherCheckbox.checked = false;
-                    }
-                });
-            }
-
             
-        }
+
+
+                // to calculate Total
+                function calculateTotals() {
+                            const ratingCategories = [5, 4, 3, 2, 1];
+
+                            ratingCategories.forEach(category => {
+                                const total = document.querySelectorAll(`input[value="${category}"]:checked`).length;
+                                const totalCell = document.getElementById(`total${category}`);
+                                totalCell.textContent = total;
+                            });
+                        }
+            // Function to un_check other checkbox
+                function uncheckOther(checkbox) {
+                if (checkbox.checked) {
+                    const checkboxes = document.querySelectorAll('input[name="' + checkbox.name + '"]');
+                    checkboxes.forEach((otherCheckbox) => {
+                        if (otherCheckbox !== checkbox) {
+                            otherCheckbox.checked = false;
+                        }
+                    });
+                }
+
+                }
+
             // Function to get the current time
             function getCurrentTime() {
                 const now = new Date();
@@ -74,7 +89,8 @@
 
                 // Ensure the date is always set to the current date when the page is loaded or reloaded
                 window.addEventListener('load', setCurrentDate);
-        </script>
+       
+       </script>
             <h1>FACULTY EVALUATION ON CLASSROOM INSTRUCTION (PEAC FORM) CLASSROOM OBSERVATION FORM</h1>
             <p>
                 <label for="Uname" class="left-label">Name: or ID number:</label>
@@ -119,130 +135,130 @@
                     <td>The teacher communicates clear expectations of student performance in line with the unit standards and competencies.</td>
                     <td><input type="checkbox" name="rating1" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                     <td><input type="checkbox" name="rating1" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
-                    <td><input type="checkbox" name="rating1" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating1" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating1" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating1" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating1" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating1" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The teacher utilizes various learning materials and resources to enable all students to learn and achieve the unit standards and competencies and learning goals.</td>
                     <td><input type="checkbox" name="rating2" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                     <td><input type="checkbox" name="rating2" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                     <td><input type="checkbox" name="rating2" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
-                    <td><input type="checkbox" name="rating2" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating2" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating2" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating2" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The teacher monitors and checks on students' learning and attainment of the unit standards and competencies by conducting varied forms of assessments during class discussion.</td>
                     <td><input type="checkbox" name="rating3" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                     <td><input type="checkbox" name="rating3" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
-                    <td><input type="checkbox" name="rating3" value="3" class="rating-checkbox"onclick="uncheckOther(this); calculateTotals();"></td>
-                    <td><input type="checkbox" name="rating3" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating3" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating3" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating3" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating3" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The teacher provides appropriate feedback or interventions to enable students in attaining the unit standars and competencies.</td>
                     <td><input type="checkbox" name="rating4" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                     <td><input type="checkbox" name="rating4" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                     <td><input type="checkbox" name="rating4" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
-                    <td><input type="checkbox" name="rating4" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating4" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating4" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating4" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The teacher manages the classroom environment and time in a way that supports student learning and the achievement of the unit standards and competencies.</td>
-                    <td><input type="checkbox" name="rating5" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating5" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating5" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating5" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating5" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating5" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating5" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating5" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating5" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating5" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The teacher possesses students' understanding by asking clarifying or critical thinking questions related to the unit standards or competencies.</td>
-                    <td><input type="checkbox" name="rating6" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating6" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating6" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating6" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating6" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating6" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating6" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating6" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating6" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating6" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 
                 <tr>
                     <td><strong>STUDENT LEARNING ACTION</strong></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
                 </tr>
                 <tr>
-                    <td>The students are active and engaged with the different learning tasks aimed at accomplishing the unit standards and competencies.</td>
-                    <td><input type="checkbox" name="rating6" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating6" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating6" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating6" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating6" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td>The students are active and engaged with the different learning tasks aimed at accomplishing the unit st0andards and competencies.</td>
+                    <td><input type="checkbox" name="rating7" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating7" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating7" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating7" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating7" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The students use different learning materials and resources, including technology, to achieve the learning goals of the unit standards and competencies.</td>
-                    <td><input type="checkbox" name="rating7" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating7" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating7" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating7" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating7" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating8" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating8" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating8" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating8" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating8" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The students share their ideas, reflections, or solutions to thought-provoking questions and real-life challenges or problems related to the unit standards and competencies.</td>
-                    <td><input type="checkbox" name="rating8" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating8" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating8" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating8" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating8" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating9" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating9" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating9" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating9" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating9" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The students collaborate, plan together, and have meaningful interactions related to the unit standards and competencies.</td>
-                    <td><input type="checkbox" name="rating9" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating9" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating9" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating9" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating9" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating10" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating10" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating10" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating10" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating10" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The students are able to explain how their ideas, outputs, or performances accomplish the unit standards and competencies.</td>
-                    <td><input type="checkbox" name="rating10" value="5" class "rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating10" value="4" class "rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating10" value="3" class "rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating10" value="2" class "rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating10" value="1" class "rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating11" value="5" class "rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating11" value="4" class "rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating11" value="3" class "rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating11" value="2" class "rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating11" value="1" class "rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The students, when encouraged or on their own, ask questions to clarify or deepen their understanding of the unit standards and competencies.</td>
-                    <td><input type="checkbox" name="rating11" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating11" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating11" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating11" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating11" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating12" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating12" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating12" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating12" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating12" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The students are able to relate or transfer their learning to daily life and real-world situations.</td>
-                    <td><input type="checkbox" name="rating12" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating12" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating12" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating12" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating12" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating13" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating13" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating13" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating13" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating13" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The students are able to integrate 21st-century skills in their achievement of the unit standards and competencies.</td>
-                    <td><input type="checkbox" name="rating13" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating13" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating13" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating13" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating13" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating14" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating14" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating14" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating14" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating14" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>The students are able to reflect on and connect their learning with the school's PVGMO.</td>
-                    <td><input type="checkbox" name="rating14" value="5" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating14" value="4" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating14" value="3" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating14" value="2" class="rating-checkbox" onclick="uncheckOther(this)"></td>
-                    <td><input type="checkbox" name="rating14" value="1" class="rating-checkbox" onclick="uncheckOther(this)"></td>
+                    <td><input type="checkbox" name="rating15" value="5" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating15" value="4" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating15" value="3" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating15" value="2" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
+                    <td><input type="checkbox" name="rating15" value="1" class="rating-checkbox" onclick="uncheckOther(this); calculateTotals();"></td>
                 </tr>
                 <tr>
                     <td>Total </td>
@@ -253,26 +269,37 @@
                     <td id="total1">0</td>
                 </tr>
 
-                <tr>
-                    <td>Average</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-                <script>
-                        function calculateTotals() {
-                            const ratingCategories = [5, 4, 3, 2, 1];
+                    <tr>
+                    <td>Average :</td>
+                        <td id="average">0.00</td>
+                    </tr>
+                </table>
 
-                            ratingCategories.forEach(category => {
-                                const total = document.querySelectorAll(`input[value="${category}"]:checked`).length;
-                                const totalCell = document.getElementById(`total${category}`);
-                                totalCell.textContent = total;
-                            });
-                        }
-                    </script>
+                <script>
+                // Define a function to calculate the weighted average
+                function calculateWeightedAverage() {
+                    const total5 = parseInt(document.getElementById("total5").textContent);
+                    const total4 = parseInt(document.getElementById("total4").textContent);
+                    const total3 = parseInt(document.getElementById("total3").textContent);
+                    const total2 = parseInt(document.getElementById("total2").textContent);
+                    const total1 = parseInt(document.getElementById("total1").textContent);
+                    const totalParticipants = 15;
+
+                    const weightedAverage = (total5 * 5 + total4 * 4 + total3 * 3 + total2 * 2 + total1 * 1) / totalParticipants;
+                    //
+                    // Display the weighted average
+                    document.getElementById("average").textContent = weightedAverage.toFixed(2); // Display average with 2 decimal places
+                }
+
+                // Add event listeners to all rating checkboxes
+                const ratingCheckboxes = document.querySelectorAll('.rating-checkbox');
+                ratingCheckboxes.forEach(function (checkbox) {
+                    checkbox.addEventListener('change', calculateWeightedAverage);
+                });
+
+                // Calculate the weighted average when the page loads
+                calculateWeightedAverage();
+            </script>
 
             <div class="form-button"><br>
                 <button type="submit" name="create">Submit</button>
