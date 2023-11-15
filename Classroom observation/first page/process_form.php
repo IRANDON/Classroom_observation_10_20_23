@@ -4,31 +4,45 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['create'])) {
         $pdo = new PDO("mysql:host=localhost;dbname=faculty_evaluation", "root", "");
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        // Retrieve and validate other form data
         $Uname = validate($_POST['Uname']);
-        $Atime = date("Y-m-d H:i:s"); // Automatically set the current time
+        
+        date_default_timezone_set('Asia/Hong_Kong'); // Set the timezone to +08:00 Beijing, Chongqing, Hong Kong
+        $Atime = date("g:i:s A");
+        
         $Usubject = validate($_POST['Usubject']);
+        $subjectc = validate($_POST['subjectc']);
         $Agrade = validate($_POST['Agrade']);
         $Adate = validate($_POST['Adate']);
         $Uobserver = validate($_POST['Uobserver']);
-        $rating1 = isset($_POST['rating1']) ? intval($_POST['rating1']) : 0;
-        $rating2 = isset($_POST['rating2']) ? intval($_POST['rating2']) : 0;
-        $rating3 = isset($_POST['rating3']) ? intval($_POST['rating3']) : 0;
-        $rating4 = isset($_POST['rating4']) ? intval($_POST['rating4']) : 0;
-        $rating5 = isset($_POST['rating5']) ? intval($_POST['rating5']) : 0;
-        $rating6 = isset($_POST['rating6']) ? intval($_POST['rating6']) : 0;
-        $rating7 = isset($_POST['rating7']) ? intval($_POST['rating7']) : 0;
-        $rating8 = isset($_POST['rating8']) ? intval($_POST['rating8']) : 0;
-        $rating9 = isset($_POST['rating9']) ? intval($_POST['rating9']) : 0;
-        $rating10 = isset($_POST['rating10']) ? intval($_POST['rating10']) : 0;
-        $rating11 = isset($_POST['rating11']) ? intval($_POST['rating11']) : 0;
-        $rating12 = isset($_POST['rating12']) ? intval($_POST['rating12']) : 0;
-        $rating13 = isset($_POST['rating13']) ? intval($_POST['rating13']) : 0;
-        $rating14 = isset($_POST['rating14']) ? intval($_POST['rating14']) : 0;
-        $rating15 = isset($_POST['rating15']) ? intval($_POST['rating15']) : 0;
-        
-        $stmt = $pdo->prepare("INSERT INTO evaluation_data (Uname, Atime, Usubject, Agrade, Adate, Uobserver, rating1, rating2, rating3, rating4, rating5, rating6, rating7, rating8, rating9, rating10, rating11, rating12, rating13, rating14, rating15) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-        if ($stmt->execute([$Uname, $Atime, $Usubject, $Agrade, $Adate, $Uobserver, $rating1, $rating2, $rating3, $rating4, $rating5, $rating6, $rating7, $rating8, $rating9, $rating10, $rating11, $rating12, $rating13, $rating14, $rating15])) {
+        // Retrieve and validate ratings
+        $ratings = array();
+        for ($i = 1; $i <= 15; $i++) {
+            $ratingName = 'rating' . $i;
+            $ratings[$i] = isset($_POST[$ratingName]) ? intval($_POST[$ratingName]) : 0;
+        }
+
+        // Calculate totals for each rating
+        $total1 = array_sum(array_filter($ratings, function($value) { return $value == 1; }));
+        $total2 = array_sum(array_filter($ratings, function($value) { return $value == 2; }));
+        $total3 = array_sum(array_filter($ratings, function($value) { return $value == 3; }));
+        $total4 = array_sum(array_filter($ratings, function($value) { return $value == 4; }));
+        $total5 = array_sum(array_filter($ratings, function($value) { return $value == 5; }));
+        $weightedAverage = calculateWeightedAverage($total1, $total2, $total3, $total4, $total5);
+
+        // Prepare the SQL statement to insert data into the database
+        $stmt = $pdo->prepare("INSERT INTO evaluation_data (Uname, Atime, Usubject, subjectc, Agrade, Adate, Uobserver, 
+            rating1, rating2, rating3, rating4, rating5, rating6, rating7, rating8, rating9, rating10, 
+            rating11, rating12, rating13, rating14, rating15, total1, total2, total3, total4, total5, weightedAverage) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+        if ($stmt->execute([$Uname, $Atime, $Usubject, $subjectc, $Agrade, $Adate, $Uobserver, 
+            $ratings[1], $ratings[2], $ratings[3], $ratings[4], $ratings[5], 
+            $ratings[6], $ratings[7], $ratings[8], $ratings[9], $ratings[10], 
+            $ratings[11], $ratings[12], $ratings[13], $ratings[14], $ratings[15], 
+            $total1, $total2, $total3, $total4, $total5, $weightedAverage
+        ])) {
             // Data saved successfully
             echo "Data saved to the database.";
         } else {
@@ -47,5 +61,11 @@ function validate($data)
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
+}
+
+function calculateWeightedAverage($total1, $total2, $total3, $total4, $total5) {
+    $weightedAverage = ($total1 + $total2 + $total3  + $total4  + $total5);
+   // $weightedAverage = ($total1 * 1 + $total2 * 2 + $total3 * 3 + $total4 * 4 + $total5 * 5) / ($total1 + $total2 + $total3 + $total4 + $total5);
+    return $weightedAverage;
 }
 ?>
